@@ -3,6 +3,10 @@ from application import app
 
 @app.route('/')
 def index():
-    print(app.config)
     return render_template('public/main/index.html',
+                            title="Flask Application")
+
+@app.route('/playlist')
+def playlist():
+    return render_template('public/main/playlist.html',
                             title="Flask Application")
