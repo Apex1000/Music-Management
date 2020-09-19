@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect
+from flask import render_template,request,redirect,url_for
 from werkzeug.utils import secure_filename
 from application import app
 import os
@@ -14,8 +14,9 @@ def index():
 
 @app.route('/playlist')
 def playlist():
+    songs = Songs.query.all()
     return render_template('public/main/playlist.html',
-                            title="Flask Application")
+                            songs=songs)
 
 @app.route('/',methods=['POST'])
 def upload():
@@ -36,3 +37,9 @@ def upload():
     db.session.commit()
 
     return redirect('playlist')
+
+@app.route('/delete/<id>')
+def delete(id):
+    Songs.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('playlist'))    
