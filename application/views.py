@@ -1,6 +1,9 @@
 from flask import render_template,request,redirect
 from application import app
 
+IMAGE_DIR = 'static/songs'
+app.config['SONGS_DIR'] = IMAGE_DIR
+
 @app.route('/')
 def index():
     return render_template('public/main/index.html',
@@ -10,3 +13,4 @@ def index():
 def playlist():
     return render_template('public/main/playlist.html',
                             title="Flask Application")
+

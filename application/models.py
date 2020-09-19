@@ -9,19 +9,16 @@ class Songs(db.Model):
     title = db.Column(
         db.String(64),
         index=False,
-        unique=True,
         nullable=False
     )
     artist = db.Column(
         db.String(64),
         index=False,
-        unique=True,
         nullable=False
     )
     album = db.Column(
         db.String(64),
         index=False,
-        unique=True,
         nullable=False
     )
     slug = db.Column(
@@ -30,7 +27,7 @@ class Songs(db.Model):
         unique=True,
         nullable=False
     )
-    slug = db.Column(
+    filename = db.Column(
         db.String(64),
         index=False,
         unique=True,
