@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Music</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your,Keywords">
+    <meta name="author" content="HimanshuGupta">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="{{url_for('static',filename='css/animate.min.css')}}" rel="stylesheet">
+    <!-- Basic stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/owl.carousel.css')}}">
+    <!-- Font awesome CSS -->
+    <link href="{{url_for('static',filename='css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='css/style-color.css')}}" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{url_for('static',filename='img/logo/favicon.ico')}}">
+</head>
+
+<body>
+    <!-- Begin page content -->
+    <div class="wrapper" id="home">
+        <div class="nav-animate"></div>
+        {% include "public/layout/navbar.html"%}
+        {% block content %}{% endblock %}
+        {% include "public/layout/footer.html"%}
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Javascript files -->
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <!-- WayPoints JS -->
+    <script src="{{url_for('static',filename='js/waypoints.min.js')}}"></script>
+    <!-- Include js plugin -->
+    <script src="{{url_for('static',filename='js/owl.carousel.min.js')}}"></script>
+    <!-- One Page Nav -->
+    <script src="{{url_for('static',filename='js/jquery.nav.js')}}"></script>
+    <!-- Respond JS for IE8 -->
+    <script src="{{url_for('static',filename='js/respond.min.js')}}"></script>
+    <!-- HTML5 Support for IE -->
+    <script src="{{url_for('static',filename='js/html5shiv.js')}}"></script>
+    <!-- Custom JS -->
+    <script src="{{url_for('static',filename='js/custom.js')}}"></script>
+    <script>
+        /* play list music button */
+        $(document).ready(function () {
+
+            var obj = document.createElement("audio");
+            obj.src = "http://localhost:5000/static/audio/audio.mp3";
+            obj.volume = 1;
+            obj.autoPlay = true;
+            obj.preLoad = true;
+
+            $('#playNowBtn').click(function (e) {
+                var $playNowButton = $(this);																/* button variable */
+                var $playlist = $playNowButton.parent().parent();						/* play list section class */
+                var $disk = $playlist.children().children('.disk');			/* disk image */
+
+                if ($disk.hasClass('rotating')) {
+                    $disk.removeClass('rotating');
+                    $playNowButton.children('i').removeClass('fa-pause').addClass('fa-play');
+                    obj.pause();
+                } else {
+                    $disk.addClass('rotating');
+                    $playNowButton.children('i').removeClass('fa-play').addClass('fa-pause');
+                    obj.play();
+                }
+                e.preventDefault();
+            });
+
+        });
+    </script>
+</body>
+
+</html>
