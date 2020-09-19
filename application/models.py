@@ -1,9 +1,9 @@
 from . import db
 
 class Songs(db.Model):
-    __tablename__ = 'todos'
+    __tablename__ = 'songs'
     id = db.Column(
-        db.Integer,
+        db.String(64),
         primary_key=True
     )
     title = db.Column(
@@ -35,4 +35,4 @@ class Songs(db.Model):
     )
     
     def __repr__(self):
-        return '<Todo {}>'.format(self.todo)
+        return '<Song {}>'.format(self.title)
