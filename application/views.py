@@ -4,13 +4,15 @@ from application import app
 import os
 import uuid
 from .models import db, Songs
+
 SONGS_DIR = 'application/static/songs'
 app.config['SONGS_DIR'] = SONGS_DIR
 
 @app.route('/')
 def index():
+    songs = Songs.query.all()
     return render_template('public/main/index.html',
-                            title="Flask Application")
+                            songs=songs)
 
 @app.route('/playlist')
 def playlist():
@@ -42,4 +44,13 @@ def upload():
 def delete(id):
     Songs.query.filter_by(id=id).delete()
     db.session.commit()
-    return redirect(url_for('playlist'))    
+    return redirect(url_for('playlist'))
+
+@app.route('/song/<id>')
+def song(id):
+    songs = Songs.query.all()
+    song=Songs.query.filter_by(slug=id).first()
+    print(song.filename)
+    return render_template('public/main/play.html',
+                            song=song,
+                            songs=songs)

@@ -71,14 +71,15 @@
 {% block script %}
 <script>
     /* play list music button */
+    var song = "http://localhost:5000/static/audio/{{song.filename}}";
 
     $(document).ready(function () {
         var obj = document.createElement("audio");
-        obj.src = "http://localhost:5000/static/audio/audio.mp3";
+        obj.src = "http://localhost:5000/static/songs/{{song.filename}}";
         obj.volume = 1;
         obj.autoPlay = true;
         obj.preLoad = true;
-
+        console.log(song)
         $('#playNowBtn').click(function (e) {
             var $playNowButton = $(this);																/* button variable */
             var $playlist = $playNowButton.parent().parent();						/* play list section class */
