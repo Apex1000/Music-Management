@@ -32,7 +32,7 @@ def jsonconvert(songs,album,artist):
         }
         items.append(item)
     datas = {
-        "total_count":"2",
+        "total_count":len(items),
         "items": items
     }
     return datas
@@ -99,3 +99,29 @@ def search():
     # print(artist)
     data = jsonconvert(songs,album,artist)
     return data,200
+
+@app.route('/find', methods=['POST','GET'])
+def find():
+    if request.method == 'POST':
+        song = request.form['title']
+        album = request.form['album']
+        artist = request.form['artist']
+        if song != "":
+            songs = Songs.query.filter(Songs.title.like("%{}%".format(song))).all()
+        else:
+            songs = []
+        if album != "":
+            album = Songs.query.filter(Songs.album.like("%{}%".format(album))).all()
+        else:
+            album = []
+        if artist != "":
+            artist = Songs.query.filter(Songs.artist.like("%{}%".format(artist))).all()
+        else:
+            artist =[]
+
+        return render_template('public/main/search.html',
+                                songs=songs,
+                                album=album,
+                                artist=artist)
+    else:
+        return render_template('public/main/search.html')
