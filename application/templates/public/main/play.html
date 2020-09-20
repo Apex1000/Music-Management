@@ -26,11 +26,9 @@
                     <!-- album details -->
                     <div class="album-details">
                         <!-- title -->
-                        <h4>Perfect Melodi</h4>
+                        <h4>{{song.title}}</h4>
                         <!-- composed by -->
-                        <h5>By Himanshu</h5>
-                        <!-- paragraph -->
-                        <p>Lorem Ipsum has been the industry's standard dummy text ever since 1500.</p>
+                        <h5>By {{song.artist}}</h5>
                         <!-- button -->
                         <a href="#" class="btn btn-lg btn-theme" id="playNowBtn"><i class="fa fa-play"></i>&nbsp; Play
                             Now</a>
@@ -43,19 +41,24 @@
                             {% for song in songs %}
                             <li class="playlist-number">
                                 <!-- song information -->
-                                <div class="song-info">
-                                    <!-- song title -->
-                                    <h4>{{song.title}}</h4>
-                                    <p><strong>Album</strong>: {{song.album}} &nbsp;|&nbsp; <strong>Type</strong>: Rock
-                                        &nbsp;|&nbsp; <strong>Singer</strong>: {{song.artist}}</p>
-                                </div>
-                                <!-- music icon -->
-                                <div class="music-icon">
-                                    <div class="music-icon">
-                                        <a href="{{url_for('song',id=song.slug)}}"><i class="fa fa-play"></i></a>
-                                        <a href="#"><i class="fa fa-pause"></i></a>
+                                <a href="{{url_for('song',id=song.slug)}}">
+                                    <div class="song-info">
+                                        <!-- song title -->
+                                        <h4>{{song.title}}</h4>
+                                        <p><strong>Album</strong>: {{song.album}} &nbsp;|&nbsp; <strong>Type</strong>:
+                                            Rock
+                                            &nbsp;|&nbsp; <strong>Singer</strong>: {{song.artist}}</p>
                                     </div>
-                                </div>
+                                    <!-- music icon -->
+                                    <div class="music-icon">
+
+                                        <div class="music-icon">
+                                            <i class="fa fa-play"></i>
+                                            <a href="#"><i class="fa fa-pause"></i></a>
+                                        </div>
+
+                                    </div>
+                                </a>
                                 <div class="clearfix"></div>
                             </li>
                             {% endfor %}
@@ -71,15 +74,11 @@
 {% block script %}
 <script>
     /* play list music button */
-    var song = "http://localhost:5000/static/audio/{{song.filename}}";
-
     $(document).ready(function () {
         var obj = document.createElement("audio");
         obj.src = "http://localhost:5000/static/songs/{{song.filename}}";
         obj.volume = 1;
         obj.autoPlay = true;
-        obj.preLoad = true;
-        console.log(song)
         $('#playNowBtn').click(function (e) {
             var $playNowButton = $(this);																/* button variable */
             var $playlist = $playNowButton.parent().parent();						/* play list section class */

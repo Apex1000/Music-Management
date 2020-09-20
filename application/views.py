@@ -12,13 +12,13 @@ app.config['SONGS_DIR'] = SONGS_DIR
 def index():
     songs = Songs.query.all()
     return render_template('public/main/index.html',
-                            songs=songs)
+                            songs=reversed(songs))
 
 @app.route('/playlist')
 def playlist():
     songs = Songs.query.all()
     return render_template('public/main/playlist.html',
-                            songs=songs)
+                            songs=reversed(songs))
 
 @app.route('/',methods=['POST'])
 def upload():
@@ -53,4 +53,10 @@ def song(id):
     print(song.filename)
     return render_template('public/main/play.html',
                             song=song,
-                            songs=songs)
+                            songs=reversed( songs))
+
+@app.route('/songs')
+def songs():
+    songs = Songs.query.all()
+    return render_template('public/main/songs.html',
+                            songs=reversed(songs))

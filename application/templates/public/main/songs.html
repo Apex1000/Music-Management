@@ -1,0 +1,54 @@
+{% extends "public/layout/base.html" %}
+{% block content %}
+<div id="latestalbum" class="hero pad">
+    <div class="container">
+        <!-- hero content -->
+        <div class="hero-content ">
+            <!-- heading -->
+            <h2>Latest Album</h2>
+            <hr>
+            <!-- paragraph -->
+            <p>We sing the best <strong class="theme-color">Songs</strong> and now we control the world best
+                <strong class="theme-color">Music</strong>.</p>
+        </div>
+        <!-- hero play list -->
+        <div class="hero-playlist">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12">
+                    <!-- play list -->
+                    <div class="playlist-content">
+                        <ul class="list-unstyled">
+                            {% for song in songs %}
+                            <li class="playlist-number">
+                                <!-- song information -->
+                                <a href="{{url_for('song',id=song.slug)}}">
+                                    <div class="song-info">
+                                        <!-- song title -->
+                                        <h4>{{song.title}}</h4>
+                                        <p><strong>Album</strong>: {{song.album}} &nbsp;|&nbsp; <strong>Type</strong>:
+                                            Rock
+                                            &nbsp;|&nbsp; <strong>Singer</strong>: {{song.artist}}</p>
+                                    </div>
+                                    <!-- music icon -->
+                                    <div class="music-icon">
+
+                                        <div class="music-icon">
+                                            <a href="#"><i class="fa fa-play"></i></a>
+                                            <a href="#"><i class="fa fa-pause"></i></a>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                <div class="clearfix"></div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
