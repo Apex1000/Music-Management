@@ -60,6 +60,21 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="{{url_for('static',filename='dist/semantic.min.js')}}"></script>
+    <script>
+        $('.ui.search')
+            .search({
+                apiSettings: {
+                    url: '//0.0.0.0:5000/search?q={query}'
+                },
+                fields: {
+                    results: 'items',
+                    title: 'name',
+                    url: 'html_url'
+                },
+                minCharacters: 3
+            })
+            ;
+    </script>
     {% block script %}{% endblock %}
 </body>
 

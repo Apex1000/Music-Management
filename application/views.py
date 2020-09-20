@@ -8,6 +8,34 @@ from .models import db, Songs
 SONGS_DIR = 'application/static/songs'
 app.config['SONGS_DIR'] = SONGS_DIR
 
+def jsonconvert(songs,album,artist):
+    items=[]
+    for i in songs:
+        item={
+            "html_url": "http://0.0.0.0:5000/song/"+i.slug,
+            "name":i.title,
+            "description":"Album: "+i.album+" | "+"Artist: "+i.artist
+        }
+        items.append(item)
+    for i in album:
+        item={
+            "html_url": "http://0.0.0.0:5000/song/"+i.slug,
+            "name":i.title,
+            "description":"Album: "+i.album+" | "+"Artist: "+i.artist
+        }
+        items.append(item)
+    for i in artist:
+        item={
+            "html_url": "http://0.0.0.0:5000/song/"+i.slug,
+            "name":i.title,
+            "description":"Album: "+i.album+" | "+"Artist: "+i.artist
+        }
+        items.append(item)
+    datas = {
+        "total_count":"2",
+        "items": items
+    }
+    return datas
 @app.route('/')
 def index():
     songs = Songs.query.all()
@@ -60,3 +88,14 @@ def songs():
     songs = Songs.query.all()
     return render_template('public/main/songs.html',
                             songs=reversed(songs))
+
+@app.route('/search')
+def search():
+    args = request.args['q']
+    search = "%{}%".format(args)
+    songs = Songs.query.filter(Songs.title.like(search)).all()
+    album = Songs.query.filter(Songs.album.like(search)).all()
+    artist = Songs.query.filter(Songs.artist.like(search)).all()
+    # print(artist)
+    data = jsonconvert(songs,album,artist)
+    return data,200
