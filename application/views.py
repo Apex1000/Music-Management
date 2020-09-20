@@ -66,7 +66,7 @@ def upload():
     db.session.add(new_song)
     db.session.commit()
 
-    return redirect('playlist')
+    return redirect(url_for('playlist'))
 
 @app.route('/delete/<id>')
 def delete(id):
