@@ -1,0 +1,58 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Config	../config.py	/^class Config:$/;"	kind:class	line:8
+DEBUG	../config.py	/^    DEBUG = False$/;"	kind:variable	line:19
+DEBUG	../config.py	/^    DEBUG = True$/;"	kind:variable	line:16
+DEBUG	../config.py	/^    DEBUG = True$/;"	kind:variable	line:23
+Development	../config.py	/^class Development(Config):$/;"	kind:class	line:22
+Production	../config.py	/^class Production(Config):$/;"	kind:class	line:18
+SECRET_KEY	../config.py	/^    SECRET_KEY = "worldisbest"$/;"	kind:variable	line:10
+SONGS_DIR	../application/views.py	/^SONGS_DIR = 'application\/static\/songs'$/;"	kind:variable	line:8
+SQLALCHEMY_DATABASE_URI	../config.py	/^        'sqlite:\/\/\/' + os.path.join(basedir, 'database.db')$/;"	kind:variable	line:14
+SQLALCHEMY_TRACK_MODIFICATIONS	../config.py	/^    SQLALCHEMY_TRACK_MODIFICATIONS = False$/;"	kind:variable	line:15
+STATIC_FOLDER	../config.py	/^    STATIC_FOLDER = 'static'$/;"	kind:variable	line:11
+Songs	../application/models.py	/^class Songs(db.Model):$/;"	kind:class	line:3
+TEMPLATES_FOLDER	../config.py	/^    TEMPLATES_FOLDER = 'templates'$/;"	kind:variable	line:12
+TESTING	../config.py	/^    TESTING = False$/;"	kind:variable	line:20
+TESTING	../config.py	/^    TESTING = True/;"	kind:variable	line:24
+__init__.py	../application/__init__.py	1;"	kind:file	line:1
+__repr__	../application/models.py	/^    def __repr__(self):$/;"	kind:member	line:37
+__tablename__	../application/models.py	/^    __tablename__ = 'songs'$/;"	kind:variable	line:4
+album	../application/models.py	/^    album = db.Column($/;"	kind:variable	line:19
+app	../application/__init__.py	/^app = Flask(__name__)$/;"	kind:variable	line:4
+app	../wsgi.py	/^app = create_app()$/;"	kind:variable	line:2
+artist	../application/models.py	/^    artist = db.Column($/;"	kind:variable	line:14
+basedir	../config.py	/^basedir = path.abspath(path.dirname(__file__))$/;"	kind:variable	line:4
+config.py	../config.py	1;"	kind:file	line:1
+create_app	../application/__init__.py	/^def create_app():$/;"	kind:function	line:8
+db	../application/__init__.py	/^db = SQLAlchemy()$/;"	kind:variable	line:6
+delete	../application/views.py	/^def delete(id):$/;"	kind:function	line:44
+filename	../application/models.py	/^    filename = db.Column($/;"	kind:variable	line:30
+id	../application/models.py	/^    id = db.Column($/;"	kind:variable	line:5
+index	../application/models.py	/^        index=False,$/;"	kind:variable	line:11
+index	../application/models.py	/^        index=False,$/;"	kind:variable	line:16
+index	../application/models.py	/^        index=False,$/;"	kind:variable	line:21
+index	../application/models.py	/^        index=False,$/;"	kind:variable	line:26
+index	../application/models.py	/^        index=False,$/;"	kind:variable	line:32
+index	../application/views.py	/^def index():$/;"	kind:function	line:12
+models.py	../application/models.py	1;"	kind:file	line:1
+nullable	../application/models.py	/^        nullable=False$/;"	kind:variable	line:12
+nullable	../application/models.py	/^        nullable=False$/;"	kind:variable	line:17
+nullable	../application/models.py	/^        nullable=False$/;"	kind:variable	line:22
+nullable	../application/models.py	/^        nullable=False$/;"	kind:variable	line:28
+nullable	../application/models.py	/^        nullable=False$/;"	kind:variable	line:34
+playlist	../application/views.py	/^def playlist():$/;"	kind:function	line:18
+primary_key	../application/models.py	/^        primary_key=True$/;"	kind:variable	line:7
+slug	../application/models.py	/^    slug = db.Column($/;"	kind:variable	line:24
+song	../application/views.py	/^def song(id):$/;"	kind:function	line:50
+songs	../application/views.py	/^def songs():$/;"	kind:function	line:59
+title	../application/models.py	/^    title = db.Column($/;"	kind:variable	line:9
+unique	../application/models.py	/^        unique=True,$/;"	kind:variable	line:27
+unique	../application/models.py	/^        unique=True,$/;"	kind:variable	line:33
+upload	../application/views.py	/^def upload():$/;"	kind:function	line:24
+views.py	../application/views.py	1;"	kind:file	line:1
+wsgi.py	../wsgi.py	1;"	kind:file	line:1

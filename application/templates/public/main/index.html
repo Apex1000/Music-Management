@@ -3,6 +3,12 @@
 <div id="latestalbum" class="hero pad">
     <div class="container">
         <!-- hero content -->
+        <div class="ui search">
+            <div class="ui left icon input" style="width: 100%">
+                <input class="prompt" type="text" placeholder="Search Songs">
+                <i class="search icon"></i>
+            </div>
+        </div>
         <div class="hero-content ">
             <!-- heading -->
             <h2>Latest Album</h2>
@@ -73,6 +79,19 @@
 {% endblock %}
 {% block script %}
 <script>
+    $('.ui.search')
+        .search({
+            apiSettings: {
+                url: '//api.github.com/search/repositories?q={query}'
+            },
+            fields: {
+                results: 'items',
+                title: 'name',
+                url: 'html_url'
+            },
+            minCharacters: 3
+        })
+        ;
     /* play list music button */
 
     $(document).ready(function () {
