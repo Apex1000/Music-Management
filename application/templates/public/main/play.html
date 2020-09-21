@@ -85,7 +85,7 @@
     /* play list music button */
     $(document).ready(function () {
         var obj = document.createElement("audio");
-        obj.src = "http://localhost:5000/static/songs/{{song.filename}}";
+        obj.src = "http://localhost:5000/{{song.slug}}";
         obj.volume = 1;
         obj.autoPlay = true;
         $('#playNowBtn').click(function (e) {

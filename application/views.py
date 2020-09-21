@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template,request,redirect,url_for,Response
 from werkzeug.utils import secure_filename
 from application import app
 import os
@@ -78,7 +78,7 @@ def delete(id):
 def song(id):
     songs = Songs.query.all()
     song=Songs.query.filter_by(slug=id).first()
-    print(song.filename)
+    # print(song.filename)
     return render_template('public/main/play.html',
                             song=song,
                             songs=reversed( songs))
@@ -98,7 +98,8 @@ def search():
     artist = Songs.query.filter(Songs.artist.like(search)).all()
     # print(artist)
     data = jsonconvert(songs,album,artist)
-    return data,200
+
+    return data, 200
 
 @app.route('/find', methods=['POST','GET'])
 def find():
@@ -125,3 +126,18 @@ def find():
                                 artist=artist)
     else:
         return render_template('public/main/search.html')
+
+
+@app.route('/<id>')
+def streamsong(id):
+    son=Songs.query.filter_by(slug=id).first()
+    print(son)
+    def generate():
+        song = "application/static/songs/"+son.filename
+        with open(song, "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+                
+    return Response(generate(), mimetype="audio/mp3")
