@@ -1,5 +1,4 @@
 # Music-Management
-
 <hr>
 
 ## Installation 
@@ -29,3 +28,10 @@ pip install -r requirements.txt
 ```
 flask run
 ```
+
+### Songs Folder
+
+```
+application/static/songs
+```
+
